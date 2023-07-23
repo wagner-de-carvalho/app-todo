@@ -9,13 +9,13 @@ import { TaskList } from '../../model/task-list';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  public taskList: Array<TaskList> = [
-    { task: 'Estudar', checked: false },
-    { task: 'Comer', checked: false },
-    { task: 'Dormir', checked: true },
-  ];
+  public taskList: Array<TaskList> = [];
   constructor() {}
   ngOnInit(): void {}
+
+  public setEmitTaskList(event: string) {
+    this.taskList.push({ task: event, checked: false });
+  }
 
   public deleteTaskListItem(item: number) {
     this.taskList.splice(item, 1);
