@@ -10,10 +10,21 @@ import { TaskList } from '../../model/task-list';
 })
 export class TodoListComponent implements OnInit {
   public taskList: Array<TaskList> = [
-    // { task: 'Estudar', checked: false },
-    // { task: 'Comer', checked: false },
-    // { task: 'Dormir', checked: true },
+    { task: 'Estudar', checked: false },
+    { task: 'Comer', checked: false },
+    { task: 'Dormir', checked: true },
   ];
   constructor() {}
   ngOnInit(): void {}
+
+  public deleteTaskListItem(item: number) {
+    this.taskList.splice(item, 1);
+  }
+
+  public deleteAllTaskList() {
+    const confirm = window.confirm('Deseja realmente apagar tudo?');
+    if (confirm) {
+      this.taskList = [];
+    }
+  }
 }
